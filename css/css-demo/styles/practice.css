@@ -6,7 +6,14 @@
 	margin-bottom: 3px;
 	border-radius: 25px;
 }
+.job:hover {
+	background-color: white;
+}
 
 .list {
 	font-size: .8em;
+}
+
+li:first-child {
+	background-color: blue;
 }
