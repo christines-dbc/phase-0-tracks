@@ -1,0 +1,19 @@
+.job {
+	font-size: .8em;
+	background-color: #e9e5dc;
+	padding: 5px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	border-radius: 25px;
+}
+.job:hover {
+	background-color: white;
+}
+
+.list {
+	font-size: .8em;
+}
+
+li:first-child {
+	background-color: blue;
+}
