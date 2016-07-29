@@ -4,3 +4,20 @@ div.outfit{
 	margin-right: 50%;
 }
 
+#octopus {
+	position: relative;
+	margin-top: 60px;
+	z-index: -1;
+}
+
+#hat {
+	position: absolute;
+	left: -15px;
+}
+
+#glasses {
+	position: absolute;
+	top: 160px;
+	left: 40px;
+	z-index: 1;
+}
