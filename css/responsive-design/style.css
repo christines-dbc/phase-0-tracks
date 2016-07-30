@@ -33,6 +33,9 @@ figcaption {
 
 body {
   max-width: 960px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #external-links {
@@ -47,4 +50,20 @@ main {
   width: 70%;
   display: inline-block;
   vertical-align: top;
+}
+
+/*@media screen and (max-width: 500px) {
+  body {
+    background-color: hotpink;
+  }
+}*/
+
+@media screen and (max-width: 540px) {
+  main h1 {
+    font-size: 1.5em;
+  }
+
+  #external-links h1 {
+    font-size: 1em;
+  }
 }
