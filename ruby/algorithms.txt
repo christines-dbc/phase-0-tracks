@@ -1,0 +1,13 @@
+Release 0
+
+- Face the elevator door
+- If desired floor is above you
+	- press the button on the top to go up
+- If desired floor is below you
+	- press the button on the bottom to go down
+- When elevator doors open
+	- Walk inside the elevator
+	- Turn 180 degrees 
+- Press button for desired floor
+- When elevator doors open
+	- Exit
