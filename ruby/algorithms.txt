@@ -1,0 +1,27 @@
+Release 0: Elevator
+
+- Face the elevator door
+- If desired floor is above you
+	- press the button on the top to go up
+- If desired floor is below you
+	- press the button on the bottom to go down
+- When elevator doors open
+	- Walk inside the elevator
+	- Turn 180 degrees 
+- Press button for desired floor
+- When elevator doors open
+	- Exit
+
+Release 1: Floss
+
+- Hold floss cartridge
+- Unravel 5 inches of floss
+- Wrap floss once around both index fingers
+- Open mouth
+- Position floss towards back left molar
+- Until all crevices clean
+	- Use fingers to position floss in between teeth
+	- Push floss in between teeth
+	- Lift floss out of teeth
+	- Move forward one tooth
+- Rinse mouth
