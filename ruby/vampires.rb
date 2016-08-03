@@ -37,6 +37,7 @@ count.times do
 		end
 
 	result = "Results inconclusive"
+
 	# If the employee got their age right, 
 	# 	and is willing to eat garlic bread 
 	# 	or sign up for insurance, 
@@ -76,5 +77,17 @@ count.times do
 		result = "Definitely a vampire"
 	end
 
+	puts "Please list any allergies one at a time (hit enter). When finished, type 'done'."
+	allergies = ""
+	until allergies == "done"
+		allergies = gets.chomp
+		if allergies == "sunshine"
+			result = "Probably a vampire"
+			break
+		end
+	end
+
 	puts result
 end
+
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
