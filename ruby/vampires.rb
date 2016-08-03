@@ -32,13 +32,14 @@ want_insurance = gets.chomp
 		want_insurance = false
 	end
 
+result = "Results inconclusive"
 # If the employee got their age right, 
 # 	and is willing to eat garlic bread 
 # 	or sign up for insurance, 
 # 		the result is “Probably not a vampire.”
 
-if age && want_garlic || want_insurance
-	puts "Probably not a vampire."
+if age && want_garlic && want_insurance
+	result = "Probably not a vampire."
 end
 
 # If the employee got their age wrong, 
@@ -46,16 +47,16 @@ end
 # 	or waives insurance, 
 # 		the result is “Probably a vampire.”
 
-if !age && !want_garlic || !want_insurance
-	puts "Probably a vampire"
+if !age && ( !want_garlic || !want_insurance)
+	result = "Probably a vampire"
 end
 
 # If the employee got their age wrong, hates garlic bread, 
 # 	and doesn’t want insurance, 
 # 		the result is “Almost certainly a vampire.”
 
-if !age && !want_garlic && !want_insurance
-	puts "Almost certainly a vampire"
+if !age && ( !want_garlic && !want_insurance)
+	result = "Almost certainly a vampire"
 end
 
 # Even if the employee is an amazing liar otherwise, 
@@ -63,8 +64,12 @@ end
 # 	because come on. In that case, you should print “Definitely a vampire.”
 # 		Otherwise, print “Results inconclusive.”
 
-if name == "Drake Cula" || "Tu Fang"
-	puts "Definitely a vampire"
-else
-	puts "Results inconclusive"
+if name == "Drake Cula"
+	result = "Definitely a vampire"
 end
+
+if name == "Tu Fang"
+	result = "Definitely a vampire"
+end
+
+puts result
