@@ -1,6 +1,8 @@
+# Initiate a hash to store data
+client = {}
+
 # Prompt the designer/user for the client's name, age, number of children, decor theme
 # Convert any user input to the appropriate data type.
-client = {}
 puts "What is your client's name?"
 client[:name] = gets.chomp
 
@@ -14,8 +16,22 @@ puts "Decor theme?"
 client[:decor] = gets.chomp
 
 # Print the hash back out to the screen when the designer has answered all of the questions.
-p client
+puts client
 
+# Give the user the opportunity to update a key (no need to loop, once is fine). 
+puts "Would you like to update a key? Which key would you like to update?"
+response = gets.chomp
 
-# Give the user the opportunity to update a key (no need to loop, once is fine). After all, sometimes users make mistakes! If the designer says "none", skip it. But if the designer enters "decor_theme" (for example), your program should ask for a new value and update the :decor_theme key. (Hint: Strings have methods that will turn them into symbols, which would be quite handy here.) You can assume the user will correctly input a key that exists in your hash -- no need to handle user errors.
+# Allow user to update their response if necessary
+# Store the updated value in the correct type
+if response	!= "none"
+	puts "Please enter the updated value for '#{response}':"
+	if response == ("age" || "children")
+		client[response.to_sym] = gets.chomp.to_i
+	else
+		client[response.to_sym] = gets.chomp
+	end
+end
+
 # Print the latest version of the hash, and exit the program.
+puts client
