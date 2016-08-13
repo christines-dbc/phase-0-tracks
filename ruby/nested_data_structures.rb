@@ -48,3 +48,8 @@ chaparral = {
 		]
 	}
 }
+
+p chaparral[:plants][:flowers]
+p chaparral[:animals][:large_mammals][2] = "Grizzly Bear"
+p chaparral[:plants][:shrubs].push("poison oak")
+p chaparral[:plants][:shrubs][4].upcase!
