@@ -1,9 +1,3 @@
-# def name_swap(full_name)
-# 	full_name = full_name.split(" ")
-# 	full_name[1] + " " + full_name[0]
-# end
-
-
 def next_letter(name)
 	# Take the first and last name and swap them
 	name = name.split(" ")
@@ -18,6 +12,10 @@ def next_letter(name)
 	name_array.map! do |letter|
 		if letter == " "
 			letter = " "
+		elsif letter == "z"
+			letter = "b"
+		elsif letter == "u"
+			letter = "a"
 		elsif vowels.include? letter
 			letter = vowels[vowels.index(letter) + 1]
 		else consonants.include? letter
@@ -33,8 +31,10 @@ def next_letter(name)
 end
 
 spy_hash = {}
-received_name = ""
 
+# User interface
+
+# Ask for their name until the user quits
 loop do
 	puts "What is your name?"
 	received_name = gets.chomp
@@ -42,12 +42,12 @@ loop do
 	if received_name == "quit"
 		break
 	else
-	spy_name = next_letter(received_name)
-	spy_hash = {
-		received_name.to_sym => spy_name
-	}
+		spy_name = next_letter(received_name)
 	end
+	# Add the spy name to the recieved name's key
+	spy_hash[received_name.to_sym] = spy_name
+	
 end
 
-# "#{key}'s spy name is #{value}"
-p spy_hash
+# Iterate through each of the spy names
+spy_hash.each { |real_name, spy_name| puts "#{real_name}'s spy name is #{spy_name}."}
