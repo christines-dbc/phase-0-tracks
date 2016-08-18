@@ -17,9 +17,9 @@ class Tortise
   attr_accessor :danger
   attr_reader :speed, :age, :name
 
-  def initialize(name)
+  def initialize(name, age)
     @name = name
-    @age = rand(0..150)
+    @age = age
     @speed = rand(1..5)
     @danger = false
   end
@@ -44,15 +44,24 @@ class Tortise
     end
   end
 
-    def about
-    puts "#{name} is #{age} #{age > 1 ? 'years' : 'year'} old."
-    puts "#{name} is #{danger ? 'not in' : 'in'} danger."
-  end
-
 end
 
-morty = Tortise.new("Morty")
-morty.lay_eggs
-morty.about
-morty.hide("raven")
-morty.walk_slow
+puts "Hello! Welcome to the Tortise Maker 3000!"
+puts "How many tortises would you like to make?"
+count = gets.chomp.to_i
+
+tortise_array = []
+
+count.times do
+  puts "What would you like to name this tortise?"
+  name = gets.chomp.capitalize
+
+  puts "How old is #{name}?"
+  age = gets.chomp.to_i
+
+  tortise_array << Tortise.new(name, age)
+end
+
+tortise_array.each do |tortise|
+  puts "#{tortise.name} is #{tortise.age} #{tortise.age > 1 ? 'years' : 'year'} old."
+end
