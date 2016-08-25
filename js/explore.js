@@ -9,8 +9,13 @@ function reverse(string) {
   for (var i = string.length - 1; i >= 0; i--){
     reversedString += string[i]
   }
-  console.log(reversedString);
+  if (string == reversedString) {
+    console.log("Palindromes are not allowed!");
+  } else {
+    console.log(reversedString);
+  }
 }
 
 reverse("Hello");
+reverse("racecar");
 
