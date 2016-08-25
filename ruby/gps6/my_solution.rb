@@ -1,10 +1,11 @@
 # Virus Predictor
 
-# I worked on this challenge [by myself, with: ].
-# We spent [#] hours on this challenge.
+# I worked on this challenge [by myself, with: Jesus].
+# We spent [2] hours on this challenge.
 
 # EXPLANATION OF require_relative
-#
+# "relative" requires an absolute path. "require_relative" uses a relative path.
+# They bring all the data into the line they are called on.
 #
 require_relative 'state_data'
 
@@ -20,8 +21,7 @@ class VirusPredictor
 
   # Calls on two other methods
   def virus_effects
-    predicted_deaths(@population_density, @population, @state)
-    speed_of_spread(@population_density, @state)
+      puts "#{@state} will lose #{predicted_deaths} people in this outbreak and will spread across the state in #{speed_of_spread} months.\n\n"
   end
 
   # Prints information about the spread of disease
@@ -29,43 +29,26 @@ class VirusPredictor
   # Cannot access methods, only from inside the class
 
   # Calculates and prints number of deaths in the state
-  def predicted_deaths(population_density, population, state)
+  def predicted_deaths
     # predicted deaths is solely based on population density
-    if @population_density >= 200
-      number_of_deaths = (@population * 0.4).floor
-    elsif @population_density >= 150
-      number_of_deaths = (@population * 0.3).floor
-    elsif @population_density >= 100
-      number_of_deaths = (@population * 0.2).floor
-    elsif @population_density >= 50
-      number_of_deaths = (@population * 0.1).floor
-    else
-      number_of_deaths = (@population * 0.05).floor
-    end
 
-    print "#{@state} will lose #{number_of_deaths} people in this outbreak"
+    factors = {200 => 0.4, 150 => 0.3, 100 => 0.2, 50 => 0.1 , 0 => 0.05 }
+
+    # another way to get the factor to multiply with Population
+
+    factor = factors.select{|population_density, factor| population_density <= @population_density }.values.first
+    return (@population * factor).floor
 
   end
 
-  # Calculates and prints speed of spread 
-  def speed_of_spread(population_density, state) #in months
+  # Calculates and prints speed of spread
+  def speed_of_spread #in months
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
-    speed = 0.0
 
-    if @population_density >= 200
-      speed += 0.5
-    elsif @population_density >= 150
-      speed += 1
-    elsif @population_density >= 100
-      speed += 1.5
-    elsif @population_density >= 50
-      speed += 2
-    else
-      speed += 2.5
-    end
-
-    puts " and will spread across the state in #{speed} months.\n\n"
+    # another way to get the factor to return the correct speed
+    factors = {200 => 0.5, 150 => 1, 100 => 1.5, 50 => 2 , 0 => 2.5 }
+    speed = factors.select{|population_density, speed| population_density <= @population_density }.values.first
 
   end
 
@@ -97,3 +80,18 @@ end
 
 #=======================================================================
 # Reflection Section
+# What are the differences between the two different hash syntaxes shown in the state_data file?
+  # => and : after a key are two ways to assign a value to the key
+
+# What does require_relative do? How is it different from require?
+  # "relative" requires an absolute path. "require_relative" uses a relative path.
+  # They bring all the data into the line they are called on.
+
+# What are some ways to iterate through a hash?
+  # call a .each method to loop through each of the keys
+  
+# When refactoring virus_effects, what stood out to you about the variables, if anything?
+  # instance variables can be called in a method
+
+# What concept did you most solidify in this challenge?
+  # using interpolation to call methods and refering to the docs for shorter ways to do things
