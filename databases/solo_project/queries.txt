@@ -1,0 +1,42 @@
+1.
+sqlite> SELECT * FROM food;
+1|Field Roast|Apple Maple Sausage|false|5|1
+2|Tofurky|Beer Brats|false|4|1
+3|Miyokos Creamery|Double Cream Chive|false|4|3
+4|Organic Eden Soy|Carob Soymilk|false|5|2
+5|Purely Decadent|Cookie Dough|true|5|4
+
+2.
+sqlite> UPDATE food SET rating=4.5 WHERE brand="Purely Decadent";
+sqlite> SELECT * FROM food;
+1|Field Roast|Apple Maple Sausage|false|5|1
+2|Tofurky|Beer Brats|false|4|1
+3|Miyokos Creamery|Double Cream Chive|false|4|3
+4|Organic Eden Soy|Carob Soymilk|false|5|2
+5|Purely Decadent|Cookie Dough|true|4.5|4
+
+3.
+sqlite> SELECT * FROM food, type WHERE food.type_id = type.id;
+1|Field Roast|Apple Maple Sausage|false|5|1|1|meats
+2|Tofurky|Beer Brats|false|4|1|1|meats
+3|Miyokos Creamery|Double Cream Chive|false|4|3|3|cheese
+4|Organic Eden Soy|Carob Soymilk|false|5|2|2|milk
+5|Purely Decadent|Cookie Dough|true|5|4|4|ice_cream
+
+4.
+sqlite> SELECT food.product, type.name FROM food JOIN type ON food.type_id = type.id;
+Apple Maple Sausage|meats
+Beer Brats|meats
+Double Cream Chive|cheese
+Carob Soymilk|milk
+Cookie Dough|ice_cream
+
+5.
+sqlite> DELETE FROM food WHERE contains_sugar="true";
+sqlite> SELECT * FROM food;
+1|Field Roast|Apple Maple Sausage|false|5|1
+2|Tofurky|Beer Brats|false|4|1
+3|Miyokos Creamery|Double Cream Chive|false|4|3
+4|Organic Eden Soy|Carob Soymilk|false|5|2
+
+6.
