@@ -28,25 +28,45 @@ end
 
 puts "Thank you for launching the Vegan Food Rater 3000!"
 
-repeat = ""
-until repeat == "no"
-  puts "What brand is the product you'd like to rate?"
-  brand = gets.chomp.downcase
+puts "What which action would you like to perform?"
+puts "Rate a product? View ratings? To quit, type 'goodbye'!"
+action = gets.chomp
 
-  puts "What is the name of the product?"
-  name = gets.chomp.downcase
+until action == "goodbye" || action == "no"
+  if action == "rate"
+    repeat = ""
+    until repeat == "no"
+      puts "What brand is the product you'd like to rate?"
+      brand = gets.chomp.downcase
 
-  puts "What type of product is this (meat, dairy and eggs, condiments, snacks, misc)?"
-  category = gets.chomp.downcase
+      puts "What is the name of the product?"
+      name = gets.chomp.downcase
 
-  puts "How would you rate this product (5 is fantastic, 1 is gross)?"
-  rating = gets.chomp.to_i
+      puts "What type of product is this (meat, dairy and eggs, condiments, snacks, misc)?"
+      category = gets.chomp.downcase
 
-  puts "Why did you give the product a #{rating} / 5?"
-  comment = gets.chomp
+      puts "How would you rate this product (5 is fantastic, 1 is gross)?"
+      rating = gets.chomp.to_i
 
-  puts "Would you like to rate another product?"
-  repeat = gets.chomp
+      puts "Why did you give the product a #{rating} / 5?"
+      comment = gets.chomp
 
-  rate_product(db, brand, category, name, rating, comment)
+      puts "Thank you for rating #{brand} #{name}!"
+
+      puts "Would you like to rate another product?"
+      repeat = gets.chomp
+
+      rate_product(db, brand, category, name, rating, comment)
+    end
+
+  elsif action == "view ratings"
+    puts "Which food category would you like to view?"
+    food_category = gets.chomp
+  else
+    puts "Sorry, I don't have the best vocabulary.\nTo rate a product, type 'rate'.\nTo view ratings for a certain category, type 'view ratings'.\nTo do other things..er.. I'm not there yet actually...\n"
+  end
+  puts "Would you like to perform another action?"
+  action = gets.chomp
 end
+
+puts "Thank you for running the Vegan Food Rater 3000!\nHope to see you again!"
