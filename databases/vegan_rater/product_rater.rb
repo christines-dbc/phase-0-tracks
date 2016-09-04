@@ -26,14 +26,29 @@ def rate_product(db, brand, category, name, rating, comment)
     VALUES (?, ?, ?, ?, ?)", [brand, category, name, rating, comment])
 end
 
+def highest_rated(db)
+  rating = db.execute("SELECT brand, name, rating, comment FROM products ORDER BY rating DESC LIMIT 5")
+  rating.each do |product|
+    puts "#{product[0]} #{product[1]} rated #{product[2]} / 5."
+  end
+end
+
+def lowest_rated(db)
+  rating = db.execute("SELECT brand, name, rating FROM products ORDER BY rating ASC LIMIT 5")
+  rating.each do |product|
+    puts "#{product[0]} #{product[1]} rated #{product[2]} / 5."
+  end
+end
+
+# USER INTERFACE
 puts "Thank you for launching the Vegan Food Rater 3000!"
 
 puts "What which action would you like to perform?"
 puts "Rate a product? View ratings? To quit, type 'goodbye'!"
-action = gets.chomp
+action = gets.chomp.downcase
 
 until action == "goodbye" || action == "no"
-  if action == "rate"
+  if action == "rate" || action == "rate a product"
     repeat = ""
     until repeat == "no"
       puts "What brand is the product you'd like to rate?"
@@ -59,13 +74,20 @@ until action == "goodbye" || action == "no"
       rate_product(db, brand, category, name, rating, comment)
     end
 
+  elsif action == "view lowest rated products"
+    lowest_rated(db)
+
+  elsif action == "view highest rated products"
+    highest_rated(db)
+
   elsif action == "view ratings"
-    puts "Which food category would you like to view?"
+    puts "Which food category would you like to view (meat, dairy and eggs, condiments, snacks, misc)?"
     food_category = gets.chomp
   else
-    puts "Sorry, I don't have the best vocabulary.\nTo rate a product, type 'rate'.\nTo view ratings for a certain category, type 'view ratings'.\nTo do other things..er.. I'm not there yet actually...\n"
+    puts "Sorry, I don't have the best vocabulary.\nHere are a list of commands I understand:
+    'rate a product', view ratings', 'view lowest/highest rated products'."
   end
-  puts "Would you like to perform another action?"
+  puts "Would you like to perform another action? For example, rate a product or view ratings?"
   action = gets.chomp
 end
 
