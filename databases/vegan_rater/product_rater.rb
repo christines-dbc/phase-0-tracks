@@ -17,10 +17,6 @@ db.execute(create_product_table_cmd)
 # db.execute("INSERT INTO products (brand, category, name, rating, comment)
 #  VALUES ('Field Roast', 1, 'Apple Smoked Sausage', 5, 'Tastes amazing!')")
 
-# db.execute(create_categories_table)
-# db.execute("INSERT INTO categories (name)
-#   VALUES ('meats'), ('dairy and eggs'), ('condiments'), ('snacks'), ('misc')")
-
 def rate_product(db, brand, category, name, rating, comment)
   db.execute("INSERT INTO products (brand, category, name, rating, comment)
     VALUES (?, ?, ?, ?, ?)", [brand, category, name, rating, comment])
@@ -36,6 +32,14 @@ end
 def lowest_rated(db)
   rating = db.execute("SELECT brand, name, rating FROM products ORDER BY rating ASC LIMIT 5")
   rating.each do |product|
+    puts "#{product[0]} #{product[1]} rated #{product[2]} / 5."
+  end
+end
+
+def best_in_category(db, category)
+  best = db.execute("SELECT brand, name, rating FROM products 
+    WHERE category = '#{category}' ORDER BY rating DESC LIMIT 3")
+  best.each do |product|
     puts "#{product[0]} #{product[1]} rated #{product[2]} / 5."
   end
 end
@@ -81,11 +85,16 @@ until action == "goodbye" || action == "no"
     highest_rated(db)
 
   elsif action == "view ratings"
-    puts "Which food category would you like to view (meat, dairy and eggs, condiments, snacks, misc)?"
-    food_category = gets.chomp
+    puts "Which food category would you like to view the top products for?"
+    puts "meat, dairy and eggs, condiments, snacks or misc?"
+    category = gets.chomp
+    best_in_category(db, category)
   else
-    puts "Sorry, I don't have the best vocabulary.\nHere are a list of commands I understand:
-    'rate a product', view ratings', 'view lowest/highest rated products'."
+    puts "Sorry, I don't have the best vocabulary."
+    puts "Here are a list of commands I understand:"
+    puts "- rate a product"
+    puts "- view ratings"
+    puts "- view lowest/highest rated products"
   end
   puts "Would you like to perform another action? For example, rate a product or view ratings?"
   action = gets.chomp
