@@ -1,0 +1,28 @@
+body {
+  background-color: #F9F9F9;
+  font-family: Tahoma, Geneva, sans-serif;
+}
+
+main {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+}
+
+img {
+  width: 70%;
+}
+
+aside {
+  display: inline-block;
+  width: 35%;
+  vertical-align: top;
+}
+
+h1 {
+  color: #CB904D;
+}
+
+h2 {
+  color: #DFCC74;
+}
